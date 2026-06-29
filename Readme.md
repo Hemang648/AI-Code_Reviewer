@@ -50,23 +50,17 @@ The AI analyzes the submitted code and returns:
 
 ## Login Page
 
-> Replace the image below with your own screenshot.
-
 ![Login Page](images/auth_page.png)
 
 ---
 
 ## Main Workspace
 
-> Replace the image below with your own screenshot.
-
 ![Workspace](images/main_interface.png)
 
 ---
 
 ## AI Review Output
-
-> Replace the image below with your own screenshot.
 
 ![Review Output](images/review.png)
 
