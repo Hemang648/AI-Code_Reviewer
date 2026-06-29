@@ -52,7 +52,7 @@ The AI analyzes the submitted code and returns:
 
 > Replace the image below with your own screenshot.
 
-![Login Page](images\auth_page.png)
+![Login Page](images/auth_page.png)
 
 ---
 
@@ -60,7 +60,7 @@ The AI analyzes the submitted code and returns:
 
 > Replace the image below with your own screenshot.
 
-![Workspace](images\main_interface.png)
+![Workspace](images/main_interface.png)
 
 ---
 
@@ -68,7 +68,7 @@ The AI analyzes the submitted code and returns:
 
 > Replace the image below with your own screenshot.
 
-![Review Output](images\review.png)
+![Review Output](images/review.png)
 
 ---
 
