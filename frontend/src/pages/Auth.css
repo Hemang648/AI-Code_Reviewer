@@ -1,0 +1,256 @@
+.auth-container{
+    width:100vw;
+    height:100vh;
+    background:#030712;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
+}
+
+
+
+
+/* PASSWORD CONTAINER  */
+
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 45px;
+}
+
+.eye {
+  position: absolute;
+  right: 15px;
+  top: 44%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+}
+
+
+
+
+
+
+#plexus-canvas{
+    position:absolute;
+    inset:0;
+}
+
+.auth-card{
+    width:1100px;
+    height:650px;
+
+    display:flex;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    z-index:10;
+
+    background:rgba(255,255,255,0.03);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+      0 0 50px rgba(0,0,0,.5);
+}
+
+.brand-pane{
+    flex:1;
+
+    background:
+      linear-gradient(
+      135deg,
+      #A855F7,
+      #06B6D4
+    );
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:3rem;
+}
+
+.logo-wrapper{
+    position:relative;
+}
+
+.radar-glow{
+    width:140px;
+    height:140px;
+
+    border-radius:50%;
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:
+      translate(-50%,-50%);
+
+    background:
+      rgba(255,255,255,.2);
+
+    animation:
+      pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+  0%{
+    transform:
+      translate(-50%,-50%)
+      scale(1);
+    opacity:.7;
+  }
+
+  100%{
+    transform:
+      translate(-50%,-50%)
+      scale(2);
+    opacity:0;
+  }
+}
+
+.brand-pane h1{
+    margin-top:2rem;
+    font-size:3rem;
+    color:white;
+}
+
+.brand-pane p{
+    margin-top:1rem;
+    color:white;
+    opacity:.9;
+}
+
+.form-pane{
+    flex:1;
+
+    background:#111827;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding:4rem;
+}
+
+.form-pane input{
+    width:100%;
+    padding:15px;
+
+    margin-bottom:16px;
+
+    background:#1F2937;
+
+    color:white;
+
+    border:1px solid #374151;
+
+    border-radius:12px;
+}
+
+.form-pane input:focus{
+    outline:none;
+    border-color:#06B6D4;
+    box-shadow:
+      0 0 15px
+      rgba(6,182,212,.5);
+}
+
+.primary-btn{
+    width:100%;
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#06B6D4;
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.github-btn{
+    margin-top:20px;
+
+    width:100%;
+    padding:15px;
+
+    background:#24292e;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+}
+
+.switch{
+    margin-top:20px;
+    color:#06B6D4;
+    cursor:pointer;
+}
+
+/* WHEN OPEN IN PHONE */
+
+@media (max-width: 768px) {
+
+  .auth-container, 
+  .login-card,
+  div[class*="auth"], 
+  div[class*="login"] {
+    flex-direction: column !important; /* Stack the blue banner on top of the form */
+    width: 90vw !important;            /* Prevent it from breaking out of the screen width */
+    max-width: 400px !important;       /* Keep it clean and compact */
+    height: auto !important;           /* Let it grow naturally downwards */
+    margin: 2rem auto !important;      /* Center it cleanly on the page */
+    overflow: hidden;
+  }
+
+  /* Target the left blue banner block */
+  .auth-banner,
+  div[class*="banner"],
+  div[class*="left"] {
+    width: 100% !important;            /* Take full width instead of half screen */
+    padding: 2rem 1rem !important;     /* Shrink padding so text fits */
+    height: auto !important;
+  }
+
+  /* Target the right login form container block */
+  .auth-form,
+  div[class*="form"],
+  div[class*="right"] {
+    width: 100% !important;            /* Take full width */
+    padding: 2rem 1.5rem !important;   /* Give inputs breathing room */
+  }
+
+  /* Make sure all inputs and buttons stretch to match perfectly */
+  .auth-form input,
+  .auth-form button {
+    width: 100% !important;
+  }
+}

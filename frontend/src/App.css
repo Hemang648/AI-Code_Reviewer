@@ -1,0 +1,524 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background: #0d1117;
+}
+
+/* App Wrapper Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #0d1117, #111827, #0f172a);
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 2rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+}
+
+.nav-brand h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #3b82f6;
+  letter-spacing: -0.5px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f3f4f6;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-btn.active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.nav-btn.btn-logout {
+  background: #ef4444;
+  color: white;
+  border: none;
+  margin-left: auto;
+}
+
+.nav-btn.btn-logout:hover {
+  background: #dc2626;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+/* --- Workspace Layout --- */
+.workspace {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  overflow: hidden; /* Avoids extra double scrollbars on page */
+}
+
+.left,
+.right {
+  border-radius: 18px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+/* Left Panel */
+.left {
+  flex: 1;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #111827;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Code Area */
+.code {
+  height: 100%;
+  width: 100%;
+}
+
+/* Review Button */
+.review {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 28px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+  z-index: 10;
+}
+
+.review:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.45);
+}
+
+.review:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.review:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Right Panel */
+.right {
+  flex: 1;
+  background: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  overflow-y: auto;
+  color: #e6edf3;
+  line-height: 1.8;
+}
+
+.placeholder-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #6e7681;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Markdown Typography Styling */
+.right h1,
+.right h2,
+.right h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+.right h1:first-child,
+.right h2:first-child,
+.right h3:first-child {
+  margin-top: 0;
+}
+
+.right p {
+  margin-bottom: 1rem;
+}
+
+.right ul,
+.right ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.right li {
+  margin-bottom: 0.5rem;
+}
+
+.right pre {
+  background: #0d1117;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.right code {
+  font-family: "Fira Code", monospace;
+  background: rgba(110, 118, 129, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-size: 85%;
+}
+
+.right pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+.right blockquote {
+  border-left: 4px solid #58a6ff;
+  padding-left: 1rem;
+  color: #9ca3af;
+  margin: 1rem 0;
+  background: rgba(88, 166, 255, 0.05);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+
+/* LANGUAGE SELECTION DROPDOWN */
+
+/* --- Language Dropdown Container --- */
+.language-selector-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: 1.5rem;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- Dropdown Select Element --- */
+
+.lang-dropdown {
+  appearance: none; /* Removes native platform styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  background-color: #161b22;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2358a6ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  
+  color: #e6edf3;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.55rem 2.2rem 0.55rem 1rem;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  min-width: 130px;
+  
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Dropdown Interactive States --- */
+.lang-dropdown:hover {
+  background-color: #1f2937;
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+.lang-dropdown:focus {
+  border-color: #3b82f6;
+  background-color: #1f2937;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* --- Dropdown Menu Options Panel --- */
+.lang-dropdown option {
+  background: #111827;
+  color: #e6edf3;
+  padding: 12px;
+  font-size: 0.9rem;
+}
+
+/* Custom separator to subtly partition navbar items if needed */
+.language-selector-wrapper::before {
+  content: "";
+  display: inline-block;
+  height: 18px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin-right: 0.75rem;
+}
+
+/* --- RESPONSIVE LAYOUT & MEDIA QUERIES --- */
+
+/* For Tablet Devices (Screens under 1024px) */
+@media (max-width: 1024px) {
+  .navbar {
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* For Mobile Phones (Screens under 768px) */
+@media (max-width: 768px) {
+  html, body, #root, .app-container {
+    height: auto; /* Allow natural scrolling on small devices */
+    overflow-y: auto; 
+  }
+
+  /* 1. Navbar Adjustments */
+  .navbar {
+    flex-direction: column;
+    align-items: stretch; /* Stretch actions full width */
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .nav-brand {
+    justify-content: center;
+  }
+
+  /* Remove the vertical separator line on mobile */
+  .language-selector-wrapper::before {
+    display: none; 
+  }
+
+  .language-selector-wrapper {
+    margin-left: 0;
+    justify-content: space-between; /* Pushes the label and select to opposite edges */
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+
+  .lang-dropdown {
+    min-width: 150px;
+  }
+
+  .nav-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid for utility navigation action buttons */
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .nav-btn {
+    text-align: center;
+    padding: 0.6rem;
+  }
+
+  .nav-btn.btn-logout {
+    margin-left: 0; /* Clear alignment defaults */
+    grid-column: span 2; /* Span full row grid width */
+  }
+
+  /* 2. Workspace Stack Alignment Setup */
+  .workspace {
+    flex-direction: column; /* Stacks Code Editor directly on top of AI Feedback panel */
+    height: auto;
+    overflow: visible;
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .left, .right {
+    flex: none;
+    width: 100%;
+    backdrop-filter: none;
+  }
+
+  /* Give the editor container box an explicit fixed height layout block size on mobile devices */
+  .left {
+  flex: 1;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  
+  
+  background: #1e1e1e !important; /* Blends seamlessly with Monaco vs-dark */
+  
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+  .right {
+    min-height: 300px;
+    height: auto; /* Expands to naturally contain code response markdown text logs */
+    padding: 1.25rem;
+  }
+
+  /* Float review trigger button cleanly floating near base anchor edge layer points */
+  .review {
+    bottom: 12px;
+    right: 12px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}/* For Mobile Phones (Screens under 768px) */
+@media (max-width: 768px) {
+  html, body, #root, .app-container {
+    height: 100% !important;
+    overflow-y: auto !important; /* Enable natural layout scrolling */
+  }
+
+  /* 1. Navbar Layout Enhancements */
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+    padding: 1.25rem 1rem;
+    background: #111827;
+  }
+
+  .nav-brand {
+    justify-content: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .language-selector-wrapper {
+    margin-left: 0;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Clear out previous pseudo-element divider shapes on mobile screen sizes */
+  .language-selector-wrapper::before {
+    display: none !important;
+  }
+
+  .lang-dropdown {
+    min-width: 140px;
+  }
+
+  .nav-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .nav-btn {
+    text-align: center;
+    padding: 0.65rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-btn.btn-logout {
+    margin-left: 0;
+    grid-column: span 2; /* Stretch logout button across the whole row */
+    padding: 0.75rem;
+  }
+
+  /* 2. Workspace Stack Alignment Setup */
+  .workspace {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .left, .right {
+    flex: none !important;
+    width: 100% !important;
+    backdrop-filter: none;
+  }
+
+  /* FIX: Ensure the code editor box expands to be perfectly visible */
+  .left {
+    height: 400px !important; 
+    min-height: 400px !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .code {
+    flex: 1;
+    height: 100%;
+    min-height: 0; /* Prevents Monaco layout collapsing inside flex boxes */
+  }
+
+  /* Floating Review Action Trigger */
+  .review {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 22px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.5);
+  }
+
+  .right {
+    min-height: 350px;
+    height: auto;
+    padding: 1.5rem 1.25rem;
+    margin-bottom: 2rem; /* Give the bottom of the page some breathing room */
+  }
+}
