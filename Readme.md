@@ -418,7 +418,7 @@ Some ideas planned for future releases include:
 # 🧠 How It Works
 
 ```
-User
+     User
 
       │
 
